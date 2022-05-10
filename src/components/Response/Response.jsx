@@ -3,10 +3,10 @@ import './Response.scss';
 
 export default function Response({prompt, completion}) {
     return (
-        <div>
-            <p>timestamp here</p>
-            <p>{prompt}</p>
-            <p>{completion}</p>
-        </div>
+        <li className='response'>
+            <p className='response__timestamp'>Time: timestamp here</p>
+            <p className='response__prompt'>Prompt: {prompt}</p>
+            <p className='response__completion'>Response: {completion}</p>
+        </li>
     )
 }

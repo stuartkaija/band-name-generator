@@ -7,7 +7,7 @@ function App() {
 
 	const [prompt, setPrompt] = useState('');
 	
-	// completions will be an array of objects, each object consistin of the user inputted prompt and the completion returned by the API
+	// completions will be an array of objects, each object consistin of the user inputted prompt and the completion *and timestamp which I think comes in the completion data* returned by the API
     const [completions, setCompletions] = useState([
 		{
 			prompt: "EL5: What does a washing machine do?",
@@ -25,6 +25,7 @@ function App() {
 
 	const handleSubmit = (event) => {
         event.preventDefault();
+		console.log("handling submit!");
         const userInput = event.target.prompt.value;
         setPrompt(userInput);
         event.target.reset();
