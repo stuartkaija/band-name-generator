@@ -63,7 +63,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Title!</h1>
+			<h1 className='App__title'>Title!</h1>
 			<Form
 				handleSubmit={handleSubmit}
 			/>

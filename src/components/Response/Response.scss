@@ -1,3 +1,5 @@
+@use '../../styles/partials/variables' as *;
+
 .response {
-    border-bottom: 1px dashed seagreen;
+    border-bottom: 1px dashed $color-dark3;
 }

@@ -1,20 +1,38 @@
+@use '../../styles/partials/variables' as *;
+
 .form {
     display: flex;
     flex-direction: column;
     margin: 1rem;
 
     &__title {
-        color: plum;
+        color: $color-accent3;
     }
 
     &__textarea {
         resize: none;
-        font-family: sans-serif;
+        font-family: 'Poppins';
+        height: 4rem;
+        border-radius: 0.25rem;
         padding: 0.5rem;
     }
 
     &__button {
+        font-family: 'Poppins';
+        background-color: $color-light4;
+        border: none;
+        border-radius: 0.25rem;
         padding: 0.5rem 0rem;
         margin: 0.5rem 0rem;
+        transition: background-color 0.1s;
+
+        &:hover {
+            background-color: $color-accent3;
+        }
+
+        &:active {
+            background-color: $color-dark2;
+            transition: background-color 0.1s;
+        }
     }
 }
