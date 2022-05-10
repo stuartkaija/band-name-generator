@@ -1,0 +1,14 @@
+@use '../../styles/partials/variables' as *;
+
+.responses {
+    margin: 1rem;
+
+    &__title {
+        color: $color-accent3;
+    }
+
+    &__list {
+        margin: 1rem;
+        padding: 0rem;
+    }
+}
