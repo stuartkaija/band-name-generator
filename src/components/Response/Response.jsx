@@ -1,12 +1,12 @@
 import React from 'react';
 import './Response.scss';
 
-export default function Response({prompt, completion}) {
+export default function Response({time, prompt, completion}) {
     return (
         <li className='response'>
             <div>
-                <h3 className='response__timestamp'>Time: </h3>
-                <p>12:34, April 14, 2022</p>
+                <h3>Created: </h3>
+                <p className='response__timestamp'>{time}</p>
             </div>
             <div>
                 <h3>Prompt: </h3>
