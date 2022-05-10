@@ -1,6 +1,7 @@
 import React from 'react';
-import './ResponseList.scss';
 import Response from '../Response/Response';
+import uniqid from 'uniqid';
+import './ResponseList.scss';
 
 export default function ResponseList({completions}) {
     return (
@@ -10,6 +11,7 @@ export default function ResponseList({completions}) {
                     {completions.map(completion => {
                         return (
                             <Response
+                                key={uniqid()}
                                 prompt={completion.prompt}
                                 completion={completion.completion}
                             />
