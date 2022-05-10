@@ -5,6 +5,7 @@ import './Form.scss';
 export default function Form() {
 
     const [prompt, setPrompt] = useState('');
+    const [completions, setCompletions] = useState([]);
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,17 +16,39 @@ export default function Form() {
 
     //useEffect to make call to API
     useEffect(() => {
-        axios
-            .get()
-            .then()
-            .catch()
+
+        const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
+        const data = {
+            prompt: "Tell me this is it",
+            max_tokens: 5,
+            temperature: 1          
+        }
+        const config = {
+            headers: {
+                Authorization: "api key goes here"
+            }
+        }
+
+        const getCompletion = async () => {
+            try {
+                const response = await axios.post(url, data, config)
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        // getCompletion();
+
+        console.log("useEffect running")
+
     }, [prompt])
 
     return (
         <form name='promptForm' id='promptForm' onSubmit={handleSubmit}>
             <h2>Submit a prompt to the AI overlords</h2>
             <label htmlFor="prompt">Enter prompt here</label>
-            <textarea name="prompt" id="prompt" cols="30" rows="10" placeholder='For example, tell me a story about a young elf from Venus.'></textarea>
+            <textarea name="prompt" id="prompt" cols="30" rows="10" placeholder='Showing, not just telling, is often the secret to a good prompt...'></textarea>
             <button type='submit' form='promptForm'>Submit</button>
         </form>
     )
