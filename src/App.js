@@ -6,7 +6,7 @@ import './App.scss';
 
 function App() {
 
-	const [prompt, setPrompt] = useState('Write a tagline for a music store that sells guitars');
+	const [prompt, setPrompt] = useState('');
 	
 	// completions will be an array of objects, each object consistin of the user inputted prompt and the completion *and timestamp which I think comes in the completion data* returned by the API
     const [completions, setCompletions] = useState([
@@ -14,22 +14,19 @@ function App() {
 			time: "timestamp goes here",
 			prompt: "EL5: What does a washing machine do?",
 			completion: "It cleans clothing using water and soap and by shaking and moving the clothing and water and soap around in a large tub"
-		},
-		{
-			time: "timestamp goes here",
-			prompt: "Write me a poem about the changing seasons",
-			completion: "Fall comes, leaves fall, Winter approaches"
-		},
-		{
-			time: "timestamp goes here",
-			prompt: "Tell me this is it",
-			completion: "This is it"
 		}
 	]);
 
+	const [error, setError] = useState(false);
+
 	const handleSubmit = (event) => {
         event.preventDefault();
+		setError(false);
 		console.log("handling submit!");
+		if (!event.target.prompt.value) {
+			setError(true);
+			return;
+		}
         const userInput = event.target.prompt.value;
         setPrompt(userInput);
         event.target.reset();
@@ -39,8 +36,8 @@ function App() {
 
         const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
         const data = {
-            prompt: "Write a tagline for a music store that sells guitars",
-            max_tokens: 5,
+            prompt: prompt,
+            max_tokens: 20,
             temperature: 1
         }
         const config = {
@@ -49,12 +46,11 @@ function App() {
             }
         }
 		const timestamp = new Date();
-		console.log(timestamp.toLocaleString())
 
         const getCompletion = async () => {
             try {
                 const response = await axios.post(url, data, config)
-				const timestamp = new Date().toLocaleString();
+				const timestamp = new Date().toLocaleDateString();
 				setCompletions([{
 					time: timestamp,
 					prompt: prompt,
@@ -67,7 +63,7 @@ function App() {
             }
         }
 
-		// getCompletion();
+		// if (prompt) {getCompletion()};
 
         console.log("useEffect running");
 
@@ -78,6 +74,7 @@ function App() {
 			<h1 className='App__title'>Title!</h1>
 			<Form
 				handleSubmit={handleSubmit}
+				error={error}
 			/>
 			<ResponseList
 				completions={completions}
