@@ -7,14 +7,40 @@
 
     &__title {
         color: $color-accent3;
+        margin: 0rem;
     }
 
     &__textarea {
         resize: none;
         font-family: 'Poppins';
         height: 4rem;
+        border: 0.01rem dotted $color-dark1;
         border-radius: 0.25rem;
         padding: 0.5rem;
+
+        &:focus {
+            outline: 0.05rem dashed $color-dark2;
+        }
+
+        &::placeholder {
+            color: $color-light1;
+        }
+
+        &--error {
+            border: 1px solid $color-error;
+        }
+    }
+
+    &__error {
+        margin: 0rem;
+        font-size: smaller;
+        color: $color-error;
+
+        &--hidden {
+            margin: 0rem;
+            font-size: smaller;
+            color: $color-light2;
+        }
     }
 
     &__button {
@@ -34,5 +60,10 @@
             background-color: $color-dark2;
             transition: background-color 0.1s;
         }
+
+        &:focus {
+            outline: 0.05rem dashed $color-dark2;
+        }
+        
     }
 }
