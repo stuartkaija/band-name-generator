@@ -7,6 +7,7 @@
 
     &__title {
         color: $color-accent3;
+        margin: 0rem;
     }
 
     &__textarea {
@@ -34,6 +35,12 @@
         margin: 0rem;
         font-size: smaller;
         color: $color-error;
+
+        &--hidden {
+            margin: 0rem;
+            font-size: smaller;
+            color: $color-light2;
+        }
     }
 
     &__button {

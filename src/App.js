@@ -11,9 +11,9 @@ function App() {
 	// completions will be an array of objects, each object consistin of the user inputted prompt and the completion *and timestamp which I think comes in the completion data* returned by the API
     const [completions, setCompletions] = useState([
 		{
-			time: "timestamp goes here",
-			prompt: "EL5: What does a washing machine do?",
-			completion: "It cleans clothing using water and soap and by shaking and moving the clothing and water and soap around in a large tub"
+			time: "1/14/2014",
+			prompt: "Write a tagline for a doggy daycare center",
+			completion: "Woof woof!"
 		}
 	]);
 
@@ -37,15 +37,14 @@ function App() {
         const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
         const data = {
             prompt: prompt,
-            max_tokens: 20,
+            max_tokens: 30,
             temperature: 1
         }
         const config = {
             headers: {
-                Authorization: "Bearer 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"
+                Authorization: "api key here"
             }
         }
-		const timestamp = new Date();
 
         const getCompletion = async () => {
             try {
@@ -71,7 +70,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1 className='App__title'>Title!</h1>
+			<h1 className='App__title'>AI Poetry Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
 				error={error}
