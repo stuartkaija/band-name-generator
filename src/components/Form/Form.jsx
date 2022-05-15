@@ -26,7 +26,7 @@ export default function Form({handleSubmit, error}) {
         <section>
             <h2 className='form__title'>Enter a prompt for the AI overlords to create a poem with</h2>
             <form className='form' name='promptForm' id='promptForm' onSubmit={handleSubmit}>
-            <button className='form__button' onClick={handlePromptExample}>Click to generate an example prompt</button>
+                <button className='form__button' onClick={handlePromptExample}>Click to generate an example prompt</button>
                 <label htmlFor="prompt" hidden>Enter prompt here</label>
                 <p className={error ? 'form__error' : 'form__error--hidden'}>the AI overlords require words</p>
                 <textarea

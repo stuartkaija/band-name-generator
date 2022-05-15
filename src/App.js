@@ -61,7 +61,7 @@ function App() {
             }
         }
 
-		// if (prompt) {getCompletion()};
+		if (prompt) {getCompletion()};
 
         console.log("useEffect running");
 
@@ -69,7 +69,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1 className='App__title'>AI Poetry Generator</h1>
+			<h1>AI Poetry Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
 				error={error}

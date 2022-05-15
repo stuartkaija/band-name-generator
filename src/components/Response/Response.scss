@@ -1,5 +1,20 @@
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .response {
     border-bottom: 1px dashed $color-dark3;
+
+    &__title {
+        margin: 1rem 1rem 0rem 0rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
 }

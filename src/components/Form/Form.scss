@@ -4,10 +4,14 @@
 .form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 1rem;
 
+    @include tablet {
+        margin: 1rem 4rem;
+    }
+
     &__title {
-        color: $color-accent3;
         margin: 0rem;
     }
 
@@ -17,7 +21,8 @@
         height: 4rem;
         border: 0.01rem dotted $color-dark1;
         border-radius: 0.25rem;
-        padding: 0.5rem;
+        width: 100%;
+        margin: 0.5rem;
 
         &:focus {
             outline: 0.05rem dashed $color-dark2;
@@ -33,7 +38,7 @@
     }
 
     &__error {
-        margin: 0rem;
+        margin: 0 auto 0 0;
         font-size: smaller;
         color: $color-error;
 
