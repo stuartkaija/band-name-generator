@@ -11,3 +11,49 @@
         @content
     }
 }
+
+@mixin button {
+    font-family: 'Poppins';
+    background-color: $color-light4;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0rem;
+    margin: 0.5rem 0rem;
+    transition: background-color 0.1s;
+
+    &:hover {
+        background-color: $color-accent3;
+    }
+
+    &:active {
+        background-color: $color-dark2;
+        transition: background-color 0.1s;
+    }
+
+    &:focus {
+        outline: 0.05rem dashed $color-dark2;
+    }
+}
+
+@mixin button-submit {
+    font-family: 'Poppins';
+    background-color: $color-accent1;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0rem;
+    margin: 0.5rem 0rem;
+    transition: background-color 0.1s;
+
+    &:hover {
+        background-color: $color-accent2;
+    }
+
+    &:active {
+        background-color: $color-dark2;
+        transition: background-color 0.1s;
+    }
+
+    &:focus {
+        outline: 0.05rem dashed $color-dark2;
+    }
+}

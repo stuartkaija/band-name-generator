@@ -10,9 +10,9 @@ function App() {
 	
     const [completions, setCompletions] = useState([
 		{
-			time: "1/14/2014",
-			prompt: "Write a tagline for a doggy daycare center",
-			completion: "Woof woof!"
+			time: "6/1/2006",
+			prompt: "Write a tagline for the coolest snowboard shop on the internet",
+			completion: "Keeping it cool on the slopes!"
 		}
 	]);
 
@@ -61,7 +61,7 @@ function App() {
             }
         }
 
-		if (prompt) {getCompletion()};
+		// if (prompt) {getCompletion()};
 
         console.log("useEffect running");
 
