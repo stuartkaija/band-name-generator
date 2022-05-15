@@ -5,10 +5,9 @@ import ResponseList from './components/ResponseList/ResponseList';
 import './App.scss';
 
 function App() {
-
+	
 	const [prompt, setPrompt] = useState('');
 	
-	// completions will be an array of objects, each object consistin of the user inputted prompt and the completion *and timestamp which I think comes in the completion data* returned by the API
     const [completions, setCompletions] = useState([
 		{
 			time: "1/14/2014",
@@ -42,7 +41,7 @@ function App() {
         }
         const config = {
             headers: {
-                Authorization: "api key here"
+                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
             }
         }
 
@@ -62,7 +61,7 @@ function App() {
             }
         }
 
-		// if (prompt) {getCompletion()};
+		if (prompt) {getCompletion()};
 
         console.log("useEffect running");
 
