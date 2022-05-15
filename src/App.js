@@ -69,7 +69,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>AI Poetry Generator</h1>
+			<h1>AI Response Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
 				error={error}

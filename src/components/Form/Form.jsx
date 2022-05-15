@@ -19,12 +19,13 @@ export default function Form({handleSubmit, error}) {
         console.log('handling examples')
         // randomly select from examples array and set it in state
         const selectedExample = promptExamples[Math.floor(Math.random() * promptExamples.length)];
-        setExample(selectedExample)
+        setExample(selectedExample);
+        console.log("selectedExample state: " + selectedExample);
     };
 
     return (
         <section>
-            <h2 className='form__title'>Enter a prompt for the AI overlords to create a poem with</h2>
+            <h2 className='form__title'>Enter a prompt for the AI</h2>
             <form className='form' name='promptForm' id='promptForm' onSubmit={handleSubmit}>
                 <button className='form__button' onClick={handlePromptExample}>Click to generate an example prompt</button>
                 <label htmlFor="prompt" hidden>Enter prompt here</label>
