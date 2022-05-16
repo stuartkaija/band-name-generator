@@ -37,7 +37,6 @@ function App() {
 		if (!prompt) return;
 
 		const url = `https://api.openai.com/v1/engines/${engine}/completions`
-		console.log(url);
         const data = {
             prompt: prompt,
             max_tokens: 60,
