@@ -7,7 +7,7 @@ import './App.scss';
 function App() {
 	
 	const [prompt, setPrompt] = useState('');
-	
+	const [engine, setEngine] = useState('text-curie-001');
     const [completions, setCompletions] = useState([
 		{
 			time: "6/1/2006",
@@ -15,30 +15,32 @@ function App() {
 			completion: "Keeping it cool on the slopes!"
 		}
 	]);
-
 	const [error, setError] = useState(false);
 
 	const handleSubmit = (event) => {
         event.preventDefault();
 		setError(false);
-		if (!event.target.prompt.value) {
+		const userInput = event.target.prompt.value;
+		const engine = event.target.engine.value;
+
+		if (!userInput) {
 			setError(true);
 			return;
 		}
-        const userInput = event.target.prompt.value;
+
         setPrompt(userInput);
-		event.target.reset();
+		setEngine(engine);
     }
 
     useEffect(() => {
-		console.log(`useEffect running (prompt dependency, prompt state: ${prompt})`);
 
 		if (!prompt) return;
 
-        const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
+		const url = `https://api.openai.com/v1/engines/${engine}/completions`
+		console.log(url);
         const data = {
             prompt: prompt,
-            max_tokens: 30,
+            max_tokens: 60,
             temperature: 1
         }
         const config = {
@@ -64,6 +66,8 @@ function App() {
         }
 
 		getCompletion();
+
+		setPrompt('');
 
 		console.log("useEffect running");
 
