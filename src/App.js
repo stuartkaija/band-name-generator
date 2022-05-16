@@ -5,8 +5,20 @@ import ResponseList from './components/ResponseList/ResponseList';
 import './App.scss';
 
 function App() {
+
+	const promptExamples = [
+        "Write a poem about the changing seasons.",
+        "Write a tagline for a sports equipment store.",
+        "Explain the concept of a washing machine to a 5 year old.",
+        "Write a tagline for a whitewater rafting school.",
+        "Give me a new and original idea for a rock and roll band's name.",
+        "What is the distance from the moon to the sun?",
+        "Give me an idea for what I should sell in my Shopify store."
+    ]
 	
 	const [prompt, setPrompt] = useState('');
+
+	const [example, setExample] = useState('');
 	
     const [completions, setCompletions] = useState([
 		{
@@ -21,7 +33,6 @@ function App() {
 	const handleSubmit = (event) => {
         event.preventDefault();
 		setError(false);
-		console.log("handling submit!");
 		if (!event.target.prompt.value) {
 			setError(true);
 			return;
@@ -31,7 +42,17 @@ function App() {
         event.target.reset();
     }
 
+	const handlePromptExample = () => {
+        console.log('handling examples')
+        // randomly select from examples array and set it in state
+        const selectedExample = promptExamples[Math.floor(Math.random() * promptExamples.length)];
+        setExample(selectedExample);
+        console.log("selectedExample state: " + selectedExample);
+    };
+
     useEffect(() => {
+
+		if (!prompt) return;
 
         const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
         const data = {
@@ -61,9 +82,15 @@ function App() {
             }
         }
 
-		if (prompt) {getCompletion()};
+		getCompletion();
 
-        console.log("useEffect running");
+		// if (prompt) {getCompletion()};
+
+		console.log("useEffect running");
+
+		return () => {
+			setPrompt('');
+		}
 
     }, [prompt])
 
@@ -71,6 +98,8 @@ function App() {
 		<div className="App">
 			<h1>AI Response Generator</h1>
 			<Form
+				handlePromptExample={handlePromptExample}
+				example={example}
 				handleSubmit={handleSubmit}
 				error={error}
 			/>

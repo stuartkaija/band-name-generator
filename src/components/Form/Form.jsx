@@ -1,27 +1,7 @@
 import React, { useState } from 'react';
 import './Form.scss';
 
-export default function Form({handleSubmit, error}) {
-
-    const [example, setExample] = useState('');
-
-    const promptExamples = [
-        "Write a poem about the changing seasons.",
-        "Write a tagline for a sports equipment store.",
-        "Explain the concept of a washing machine to a 5 year old.",
-        "Write a tagline for a whitewater rafting school.",
-        "Give me a new and original idea for a rock and roll band's name.",
-        "What is the distance from the moon to the sun?",
-        "Give me an idea for what I should sell in my Shopify store."
-    ]
-
-    const handlePromptExample = () => {
-        console.log('handling examples')
-        // randomly select from examples array and set it in state
-        const selectedExample = promptExamples[Math.floor(Math.random() * promptExamples.length)];
-        setExample(selectedExample);
-        console.log("selectedExample state: " + selectedExample);
-    };
+export default function Form({handlePromptExample, example, handleSubmit, error}) {
 
     return (
         <section>
