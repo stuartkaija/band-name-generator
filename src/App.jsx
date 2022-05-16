@@ -10,9 +10,9 @@ function App() {
 	const [engine, setEngine] = useState('text-curie-001');
     const [completions, setCompletions] = useState([
 		{
-			time: "6/1/2006",
+			engine: "text-curie-001",
 			prompt: "Write a tagline for the coolest snowboard shop on the internet",
-			completion: "Keeping it cool on the slopes!"
+			completion: "Setting you up for the coolest gear for the slopes."
 		}
 	]);
 	const [error, setError] = useState(false);
@@ -52,9 +52,8 @@ function App() {
         const getCompletion = async () => {
             try {
                 const response = await axios.post(url, data, config)
-				const timestamp = new Date().toLocaleDateString();
 				setCompletions([{
-					time: timestamp,
+					engine: engine,
 					prompt: prompt,
 					completion: response.data.choices[0].text
 				}, ...completions])
@@ -67,9 +66,8 @@ function App() {
 
 		getCompletion();
 
+		// setting prompt back to an empty string allows the user to submit the same prompt repeatedly
 		setPrompt('');
-
-		console.log("useEffect running");
 
     }, [prompt])
 

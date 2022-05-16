@@ -12,7 +12,7 @@ export default function ResponseList({completions}) {
                     return (
                         <Response
                             key={uniqid()}
-                            time={completion.time}
+                            engine={completion.engine}
                             prompt={completion.prompt}
                             completion={completion.completion}
                         />

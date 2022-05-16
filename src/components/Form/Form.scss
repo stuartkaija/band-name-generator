@@ -1,18 +1,54 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+.form-section {
+
+    &__title {
+        margin: 0rem;
+    }
+}
+
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 1rem;
 
     @include tablet {
         margin: 1rem 4rem;
     }
 
-    &__title {
-        margin: 0rem;
+    &__instructions {
+        margin: 0.5rem 0rem;
+
+        &--span {
+            font-style: italic;
+        }
+
+        &--link:visited {
+            color: inherit;
+        }
+    }
+
+    &__label {
+        margin: 0.5rem 0rem;
+    }
+
+    &__select {
+        font-family: 'Poppins';
+        border: 0.01rem dotted $color-dark1;
+        border-radius: 0.25rem;
+        width: 100%;
+        padding: 0.5rem;
+        transition: width 1s ease-in-out;
+
+        @include tablet {
+            width: 20rem;
+            transition: width 1s ease-in-out;
+        }
+
+        &:focus {
+            outline: 0.05rem dashed $color-dark2;
+        }
     }
 
     &__textarea {
@@ -21,8 +57,6 @@
         height: 4rem;
         border: 0.01rem dotted $color-dark1;
         border-radius: 0.25rem;
-        width: 100%;
-        margin: 0.5rem;
         padding: 0.5rem;
 
         &:focus {
@@ -52,9 +86,5 @@
 
     &__button {
         @include button;
-
-        &--submit {
-            @include button-submit;
-        }
     }
 }
