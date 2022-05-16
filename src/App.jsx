@@ -7,36 +7,39 @@ import './App.scss';
 function App() {
 	
 	const [prompt, setPrompt] = useState('');
-	
+	const [engine, setEngine] = useState('text-curie-001');
     const [completions, setCompletions] = useState([
 		{
-			time: "1/14/2014",
-			prompt: "Write a tagline for a doggy daycare center",
-			completion: "Woof woof!"
+			engine: "text-curie-001",
+			prompt: "Write a tagline for the coolest snowboard shop on the internet",
+			completion: "Setting you up for the coolest gear for the slopes."
 		}
 	]);
-
 	const [error, setError] = useState(false);
 
 	const handleSubmit = (event) => {
         event.preventDefault();
 		setError(false);
-		console.log("handling submit!");
-		if (!event.target.prompt.value) {
+		const userInput = event.target.prompt.value;
+		const engine = event.target.engine.value;
+
+		if (!userInput) {
 			setError(true);
 			return;
 		}
-        const userInput = event.target.prompt.value;
+
         setPrompt(userInput);
-        event.target.reset();
+		setEngine(engine);
     }
 
     useEffect(() => {
 
-        const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
+		if (!prompt) return;
+
+		const url = `https://api.openai.com/v1/engines/${engine}/completions`
         const data = {
             prompt: prompt,
-            max_tokens: 30,
+            max_tokens: 60,
             temperature: 1
         }
         const config = {
@@ -48,9 +51,8 @@ function App() {
         const getCompletion = async () => {
             try {
                 const response = await axios.post(url, data, config)
-				const timestamp = new Date().toLocaleDateString();
 				setCompletions([{
-					time: timestamp,
+					engine: engine,
 					prompt: prompt,
 					completion: response.data.choices[0].text
 				}, ...completions])
@@ -61,15 +63,16 @@ function App() {
             }
         }
 
-		if (prompt) {getCompletion()};
+		getCompletion();
 
-        console.log("useEffect running");
+		// setting prompt back to an empty string allows the user to submit the same prompt repeatedly
+		setPrompt('');
 
     }, [prompt])
 
 	return (
 		<div className="App">
-			<h1 className='App__title'>AI Poetry Generator</h1>
+			<h1>AI Response Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
 				error={error}

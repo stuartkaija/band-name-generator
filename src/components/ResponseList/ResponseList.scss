@@ -1,14 +1,20 @@
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .responses {
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
 
     &__title {
-        color: $color-accent3;
+        margin: 0rem;
     }
 
     &__list {
         margin: 1rem;
         padding: 0rem;
+
+        @include tablet {
+            margin: 1rem 4rem;
+        }
     }
 }

@@ -1,40 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Form.scss';
 
 export default function Form({handleSubmit, error}) {
 
-    const [example, setExample] = useState('');
-
-    const promptExamples = [
-        "Write a poem about the changing seasons.",
-        "Write a tagline for a sports equipment store.",
-        "Explain the concept of a washing machine to a 5 year old.",
-        "Write a tagline for a whitewater rafting school.",
-        "Give me a new and original idea for a rock and roll band.",
-        "What is the distance from the moon to the sun?",
-    ]
-
-    const handlePromptExample = () => {
-        console.log('handling examples')
-        // randomly select from examples array and set it in state
-        const selectedExample = promptExamples[Math.floor(Math.random() * promptExamples.length)];
-        setExample(selectedExample)
-    };
-
     return (
-        <section>
-            <h2 className='form__title'>Enter a prompt for the AI overlords to create a poem with</h2>
-            <button onClick={handlePromptExample}>Click to generate an example prompt</button>
+        <section className='form-section'>
+            <h2 className='form-section__title'>Prompt</h2>
             <form className='form' name='promptForm' id='promptForm' onSubmit={handleSubmit}>
-                <label htmlFor="prompt" hidden>Enter prompt here</label>
-                <p className={error ? 'form__error' : 'form__error--hidden'}>the AI overlords require words</p>
+                <p className='form__instructions'>Enter a prompt below; once you click submit, the AI engine will respond with some text that attempts to answer whatever you have asked of it. The key to a good prompt is to <span className='form__instructions--span'>be explicit and descriptive</span>! Documentation for the OpenAI API can be found <a className='form__instructions--link' href="https://beta.openai.com/docs/introduction" target='_blank'>here</a></p>
+                <p className='form__instructions'>Information on the different AI engines can be found <a className='form__instructions--link' href="https://beta.openai.com/docs/engines" target='_blank'>here</a>. Broadly speaking, Davinci is the most powerful engine, while Ada is the fastest. Experiment with different engines to see how they impact responses.</p>
+                <label className='form__label' htmlFor="engine">Select an AI engine:</label>
+                <select className='form__select' name="engine" id="engine" defaultValue="text-curie-001">
+                    <option value="text-davinci-002">text-davinci-002</option>
+                    <option value="text-curie-001">text-curie-001</option>
+                    <option value="text-babbage-001">text-babbage-001</option>
+                    <option value="text-ada-001">text-ada-001</option>
+                </select>
+                <label className='form__label' htmlFor="prompt">Enter prompt:</label>
                 <textarea
                     className={error ? 'form__textarea form__textarea--error' : 'form__textarea'}
                     name="prompt"
                     id="prompt"
-                    placeholder='e.g. write a tagline for a music store that sells guitars'
-                    defaultValue={example ? example : ''}
+                    placeholder='e.g. Write a poem about a dog who loves swimming and playing fetch'
                 ></textarea>
+                <p className={error ? 'form__error' : 'form__error--hidden'}>please type a descriptive prompt for the AI!</p>
                 <button className='form__button' type='submit' form='promptForm'>Submit</button>
             </form>
         </section>

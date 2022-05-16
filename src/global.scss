@@ -1,4 +1,5 @@
 @use '../src/styles/partials/typography' as *;
+@use '../src/styles/partials/variables' as *;
 
 *,**::before,**::after {
   box-sizing: border-box;
@@ -11,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $color-dark4;
 }
 
 code {

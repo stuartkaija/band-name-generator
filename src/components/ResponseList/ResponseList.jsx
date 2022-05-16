@@ -5,20 +5,20 @@ import './ResponseList.scss';
 
 export default function ResponseList({completions}) {
     return (
-        <div className='responses'>
+        <section className='responses'>
             <h2 className='responses__title'>Responses</h2>
-                <ul className='responses__list'>
-                    {completions.map(completion => {
-                        return (
-                            <Response
-                                key={uniqid()}
-                                time={completion.time}
-                                prompt={completion.prompt}
-                                completion={completion.completion}
-                            />
-                        )
-                    })}
-                </ul>
-        </div>
+            <ul className='responses__list'>
+                {completions.map(completion => {
+                    return (
+                        <Response
+                            key={uniqid()}
+                            engine={completion.engine}
+                            prompt={completion.prompt}
+                            completion={completion.completion}
+                        />
+                    )
+                })}
+            </ul>
+        </section>
     )
 }
