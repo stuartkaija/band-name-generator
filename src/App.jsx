@@ -44,7 +44,7 @@ function App() {
         }
         const config = {
             headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+                // Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
             }
         }
 
