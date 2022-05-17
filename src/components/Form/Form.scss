@@ -47,7 +47,7 @@
         }
 
         &:focus {
-            outline: 0.05rem dashed $color-dark2;
+            outline: 0.1rem dashed $color-dark2;
         }
     }
 
@@ -60,7 +60,7 @@
         padding: 0.5rem;
 
         &:focus {
-            outline: 0.05rem dashed $color-dark2;
+            outline: 0.1rem dashed $color-dark2;
         }
 
         &::placeholder {
@@ -78,9 +78,9 @@
         color: $color-error;
 
         &--hidden {
+            visibility: hidden;
             margin: 0rem;
             font-size: smaller;
-            color: $color-light2;
         }
     }
 

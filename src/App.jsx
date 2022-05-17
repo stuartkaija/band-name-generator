@@ -59,7 +59,7 @@ function App() {
 
             } catch (error) {
                 console.log(error);
-				// send something to user indicated an error on the server and what the error is
+				alert(error.message)
             }
         }
 
