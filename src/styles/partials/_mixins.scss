@@ -34,11 +34,11 @@
     }
 
     &:active {
-        background-color: $color-dark2;
+        background-color: $color-dark1;
         transition: background-color 0.1s;
     }
 
     &:focus {
-        outline: 0.1rem dashed $color-dark2;
+        outline: 0.1rem dashed $color-dark1;
     }
 }
