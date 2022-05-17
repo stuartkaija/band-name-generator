@@ -36,17 +36,17 @@ function App() {
 
 		if (!prompt) return;
 
-		const url = `https://api.openai.com/v1/engines/${engine}/completions`
+		const url = `https://api.openai.com/v1/engines/${engine}/completions`;
         const data = {
             prompt: prompt,
             max_tokens: 60,
             temperature: 1
-        }
+        };
         const config = {
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
             }
-        }
+        };
 
         const getCompletion = async () => {
             try {
@@ -55,11 +55,11 @@ function App() {
 					engine: engine,
 					prompt: prompt,
 					completion: response.data.choices[0].text
-				}, ...completions])
+				}, ...completions]);
 
             } catch (error) {
                 console.log(error);
-				alert(error.message)
+				alert(error.message);
             }
         }
 
@@ -71,7 +71,7 @@ function App() {
     }, [prompt])
 
 	return (
-		<div className="App">
+		<main className="App">
 			<h1>AI Response Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
@@ -80,7 +80,7 @@ function App() {
 			<ResponseList
 				completions={completions}
 			/>
-		</div>
+		</main>
 	);
 }
 

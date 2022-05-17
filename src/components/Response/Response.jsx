@@ -5,16 +5,16 @@ export default function Response({engine, prompt, completion}) {
     return (
         <li className='response'>
             <div className='response__container'>
-                <h3 className='response__title'>Engine: </h3>
-                <p className='response__timestamp'>{engine}</p>
+                <h3>Engine: </h3>
+                <p>{engine}</p>
             </div>
             <div className='response__container'>
-                <h3 className='response__title'>Prompt: </h3>
-                <p className='response__prompt'>{prompt}</p>
+                <h3>Prompt: </h3>
+                <p>{prompt}</p>
             </div>
             <div className='response__container'>
-                <h3 className='response__title'>Response: </h3>
-                <p className='response__completion'>{completion}</p>
+                <h3>Response: </h3>
+                <p>{completion}</p>
             </div>
         </li>
     )
