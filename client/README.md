@@ -1,4 +1,4 @@
-# Shopify Frontend Dev Challenge
+# OpenAI response generator
 
 live demo - https://shopify-frontend-dev-challenge.netlify.app/
 
