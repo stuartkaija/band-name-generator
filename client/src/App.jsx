@@ -32,43 +32,21 @@ function App() {
 		setEngine(engine);
     }
 
-    useEffect(() => {
-
+	useEffect(() => {
 		if (!prompt) return;
 
-		const url = `https://api.openai.com/v1/engines/${engine}/completions`;
-        const data = {
-            prompt: prompt,
-            max_tokens: 60,
-            temperature: 1
-        };
-        const config = {
-            headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-            }
-        };
+		axios.post("http://localhost:8080/", {
+			prompt: prompt,
+			engine: engine
+		})
+		.then(response => setCompletions([{
+			engine: engine,
+			prompt: prompt,
+			completion: response.data.text
+		}, ...completions]))
+		.catch(error => console.log(`error: ${error}`))
 
-        const getCompletion = async () => {
-            try {
-                const response = await axios.post(url, data, config)
-				setCompletions([{
-					engine: engine,
-					prompt: prompt,
-					completion: response.data.choices[0].text
-				}, ...completions]);
-
-            } catch (error) {
-                console.log(error);
-				alert(error.message);
-            }
-        }
-
-		getCompletion();
-
-		// setting prompt back to an empty string allows the user to submit the same prompt repeatedly
-		setPrompt('');
-
-    }, [prompt])
+	}, [prompt])
 
 	return (
 		<main className="App">
