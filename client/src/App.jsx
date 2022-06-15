@@ -40,6 +40,9 @@ function App() {
 		}, ...completions]))
 		.catch(error => console.log(`error: ${error}`))
 
+		// setting prompt back to empty string allows user to submit same prompt repeatedly
+		setPrompt('');
+
 	}, [prompt])
 
 	return (
