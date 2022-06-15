@@ -8,13 +8,7 @@ function App() {
 	
 	const [prompt, setPrompt] = useState('');
 	const [engine, setEngine] = useState('text-curie-001');
-    const [completions, setCompletions] = useState([
-		{
-			engine: "text-curie-001",
-			prompt: "Write a tagline for the coolest snowboard shop on the internet",
-			completion: "Setting you up for the coolest gear for the slopes."
-		}
-	]);
+    const [completions, setCompletions] = useState([]);
 	const [error, setError] = useState(false);
 
 	const handleSubmit = (event) => {
