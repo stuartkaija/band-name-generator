@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from './components/Form/Form';
-import ResponseList from './components/ResponseList/ResponseList';
+import Response from './components/Response/Response';
 import './App.scss';
 
 function App() {
 	
-	const [prompt, setPrompt] = useState('');
-	const [model, setModel] = useState('text-curie-001');
-    const [completions, setCompletions] = useState([]);
-	const [error, setError] = useState(false);
+	// const [prompt, setPrompt] = useState('');
+	// const [model, setModel] = useState('text-curie-001');
+	// const [error, setError] = useState(false);
+	const [genre, setGenre] = useState('rock')
+    const [completion, setCompletion] = useState({});
 
 	const handleSubmit = (event) => {
         event.preventDefault();
-		setError(false);
-		const userInput = event.target.prompt.value;
-		const model = event.target.model.value;
+		const genre = event.target.genre.value;
+		console.log(genre);
+		// setError(false);
+		// const userInput = event.target.prompt.value;
+		// const model = event.target.model.value;
 
-		if (!userInput) {
-			setError(true);
-			return;
-		}
-
-        setPrompt(userInput);
-		setModel(model);
+		// if (!userInput) {
+		// 	setError(true);
+		// 	return;
+		// }
+		setGenre(genre);
+        // setPrompt(userInput);
+		// setModel(model);
     }
 
 	useEffect(() => {
@@ -31,29 +34,29 @@ function App() {
 
 		axios.post("http://localhost:8080/", {
 			prompt: prompt,
-			model: model
+			// model: model
 		})
-		.then(response => setCompletions([{
-			model: model,
-			prompt: prompt,
+		.then(response => setCompletion({
+			// model: model,
+			// prompt: prompt,
 			completion: response.data.text
-		}, ...completions]))
+		}))
 		.catch(error => console.log(`error: ${error}`))
 
 		// setting prompt back to empty string allows user to submit same prompt repeatedly
-		setPrompt('');
+		// setPrompt('');
 
 	}, [prompt])
 
 	return (
 		<main className="App">
-			<h1>AI Response Generator</h1>
+			<h1>Band Name Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
-				error={error}
+				// error={error}
 			/>
-			<ResponseList
-				completions={completions}
+			<Response
+				completion={completion.completion}
 			/>
 		</main>
 	);
