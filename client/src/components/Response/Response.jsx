@@ -1,12 +1,12 @@
 import React from 'react';
 import './Response.scss';
 
-export default function Response({engine, prompt, completion}) {
+export default function Response({model, prompt, completion}) {
     return (
         <li className='response'>
             <div className='response__container'>
-                <h3>Engine: </h3>
-                <p>{engine}</p>
+                <h3>Model: </h3>
+                <p>{model}</p>
             </div>
             <div className='response__container'>
                 <h3>Prompt: </h3>

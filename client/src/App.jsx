@@ -7,7 +7,7 @@ import './App.scss';
 function App() {
 	
 	const [prompt, setPrompt] = useState('');
-	const [engine, setEngine] = useState('text-curie-001');
+	const [model, setModel] = useState('text-curie-001');
     const [completions, setCompletions] = useState([]);
 	const [error, setError] = useState(false);
 
@@ -15,7 +15,7 @@ function App() {
         event.preventDefault();
 		setError(false);
 		const userInput = event.target.prompt.value;
-		const engine = event.target.engine.value;
+		const model = event.target.model.value;
 
 		if (!userInput) {
 			setError(true);
@@ -23,7 +23,7 @@ function App() {
 		}
 
         setPrompt(userInput);
-		setEngine(engine);
+		setModel(model);
     }
 
 	useEffect(() => {
@@ -31,10 +31,10 @@ function App() {
 
 		axios.post("http://localhost:8080/", {
 			prompt: prompt,
-			engine: engine
+			model: model
 		})
 		.then(response => setCompletions([{
-			engine: engine,
+			model: model,
 			prompt: prompt,
 			completion: response.data.text
 		}, ...completions]))
