@@ -7,11 +7,11 @@ export default function Form({handleSubmit, error}) {
         <section className='form-section'>
             <h2 className='form-section__title'>Prompt</h2>
             <form className='form' name='promptForm' id='promptForm' onSubmit={handleSubmit}>
-                <p className='form__instructions'>Enter a prompt below; once you click submit, the AI engine will respond with some text that attempts to answer whatever you have asked of it. The key to a good prompt is to <span className='form__instructions--span'>be explicit and descriptive</span>!</p>
+                <p className='form__instructions'>Enter a prompt below; once you click submit, the AI model will respond with some text that attempts to answer whatever you have asked of it. The key to a good prompt is to <span className='form__instructions--span'>be explicit and descriptive</span>!</p>
                 <p className='form__instructions'>For example, you could ask it to write you a poem about a dog who loves swimming and playing fetch. Further guidance on writing a good prompt can be found at this <a className='form__instructions--link' href="https://beta.openai.com/docs/guides/completion/prompt-design" target='_blank' rel='noreferrer'>link</a></p>
-                <p className='form__instructions'>Information on the different AI engines can be found at this <a className='form__instructions--link' href="https://beta.openai.com/docs/engines" target='_blank' rel='noreferrer'>link</a>. Broadly speaking, Davinci is the most powerful engine, while Ada is the fastest. Experiment with different engines to see how they impact responses.</p>
-                <label className='form__label' htmlFor="engine">Select an AI engine:</label>
-                <select className='form__select' name="engine" id="engine" defaultValue="text-curie-001">
+                <p className='form__instructions'>Information on the different AI models can be found at this <a className='form__instructions--link' href="https://beta.openai.com/docs/models" target='_blank' rel='noreferrer'>link</a>. Broadly speaking, Davinci is the most powerful model, while Ada is the fastest. Experiment with different models to see how they impact responses.</p>
+                <label className='form__label' htmlFor="model">Select an AI model:</label>
+                <select className='form__select' name="model" id="model" defaultValue="text-curie-001">
                     <option value="text-davinci-002">text-davinci-002</option>
                     <option value="text-curie-001">text-curie-001</option>
                     <option value="text-babbage-001">text-babbage-001</option>

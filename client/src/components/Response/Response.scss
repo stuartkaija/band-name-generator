@@ -17,4 +17,11 @@
             justify-content: space-between;
         }
     }
+
+    &__text {
+
+        @include tablet {
+            padding-left: 1rem;
+        }
+    }
 }
