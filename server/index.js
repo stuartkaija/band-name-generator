@@ -14,10 +14,11 @@ app.use(cors());
 
 // routes
 app.post("/", (req, res) => {
-    const { prompt, engine } = req.body;
+    const { prompt, model } = req.body;
 
-    const url = `https://api.openai.com/v1/engines/${engine}/completions`
+    const url = `https://api.openai.com/v1/completions`
     const data = {
+        model: model,
         prompt: prompt,
         max_tokens: 60,
         temperature: 1
@@ -39,7 +40,7 @@ app.listen(port, () => {
     console.log('Server is running on 8080');
 });
 
-	// 	const url = `https://api.openai.com/v1/engines/${engine}/completions`;
+	// 	const url = `https://api.openai.com/v1/models/${model}/completions`;
     //     const data = {
     //         prompt: prompt,
     //         max_tokens: 60,
@@ -55,7 +56,7 @@ app.listen(port, () => {
     //         try {
     //             const response = await axios.post(url, data, config)
 	// 			setCompletions([{
-	// 				engine: engine,
+	// 				model: model,
 	// 				prompt: prompt,
 	// 				completion: response.data.choices[0].text
 	// 			}, ...completions]);
