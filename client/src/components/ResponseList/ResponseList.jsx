@@ -3,7 +3,7 @@ import Response from '../Response/Response';
 import uniqid from 'uniqid';
 import './ResponseList.scss';
 
-export default function ResponseList({completions}) {
+export default function ResponseList({completions, loading}) {
     return (
         <section className='responses'>
             <h2 className='responses__title'>Responses</h2>
@@ -15,6 +15,7 @@ export default function ResponseList({completions}) {
                             model={completion.model}
                             prompt={completion.prompt}
                             completion={completion.completion}
+                            loading={loading}
                         />
                     )
                 })}

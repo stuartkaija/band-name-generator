@@ -10,10 +10,12 @@ function App() {
 	const [model, setModel] = useState('text-curie-001');
     const [completions, setCompletions] = useState([]);
 	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = (event) => {
         event.preventDefault();
 		setError(false);
+		setLoading(true);
 		const userInput = event.target.prompt.value;
 		const model = event.target.model.value;
 
@@ -37,13 +39,17 @@ function App() {
 			model: model,
 			prompt: prompt,
 			completion: response.data.text
-		}, ...completions]))
+		}]))
 		.catch(error => console.log(`error: ${error}`))
 
 		// setting prompt back to empty string allows user to submit same prompt repeatedly
 		setPrompt('');
 
 	}, [prompt])
+
+	useEffect(() => {
+		console.log('things are loading');
+	}, [loading])
 
 	return (
 		<main className="App">
@@ -54,6 +60,7 @@ function App() {
 			/>
 			<ResponseList
 				completions={completions}
+				loading={loading}
 			/>
 		</main>
 	);
