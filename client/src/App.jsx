@@ -28,12 +28,6 @@ function App() {
 			.catch(error => console.log(`error: ${error}`))		
     }
 
-	// useEffect(() => {
-	// 	console.log(genre);
-	// 	// check if genre is empty string
-	// 	// change error state
-	// }, [genre])
-
 	return (
 		<main className="App">
 			<h1>Band Name Generator</h1>

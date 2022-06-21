@@ -1,13 +1,6 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-.form-section {
-
-    &__title {
-        margin: 0rem;
-    }
-}
-
 .form {
     display: flex;
     flex-direction: column;
@@ -17,16 +10,9 @@
         margin: 1rem 4rem;
     }
 
-    &__instructions {
-        margin: 0.5rem 0rem;
-
-        &--span {
-            font-style: italic;
-        }
-
-        &--link:visited {
-            color: inherit;
-        }
+    &__select-section {
+        display: flex;
+        justify-content: space-between;
     }
 
     &__label {
@@ -37,38 +23,16 @@
         font-family: 'Poppins';
         border: 0.01rem dotted $color-dark1;
         border-radius: 0.25rem;
-        width: 100%;
-        padding: 0.5rem;
+        width: 60%;
+        padding: 0rem 0.5rem;
         transition: width 1s ease-in-out;
 
         @include tablet {
-            width: 20rem;
             transition: width 1s ease-in-out;
         }
 
         &:focus {
             outline: 0.1rem dashed $color-dark1;
-        }
-    }
-
-    &__textarea {
-        resize: none;
-        font-family: 'Poppins';
-        height: 4rem;
-        border: 0.01rem dotted $color-dark1;
-        border-radius: 0.25rem;
-        padding: 0.5rem;
-
-        &:focus {
-            outline: 0.1rem dashed $color-dark1;
-        }
-
-        &::placeholder {
-            color: $color-light1;
-        }
-
-        &--error {
-            border: 1px solid $color-error;
         }
     }
 
@@ -85,6 +49,34 @@
     }
 
     &__button {
-        @include button;
+        font-family: 'Poppins';
+        font-size: larger;
+        background-color: $color-accent1;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 1rem 0rem;
+        margin: 0.5rem 0rem;
+        width: 100%;
+        transition: background-color 0.1s, width 1s ease-in-out;
+        margin-left: auto;
+    
+        @include tablet {
+            width: 40rem;
+            transition: width 1s ease-in-out;
+            margin: 0rem auto;
+        }
+    
+        &:hover {
+            background-color: $color-accent2;
+        }
+    
+        &:active {
+            background-color: $color-dark1;
+            transition: background-color 0.1s;
+        }
+    
+        &:focus {
+            outline: 0.1rem dashed $color-dark1;
+        }
     }
 }

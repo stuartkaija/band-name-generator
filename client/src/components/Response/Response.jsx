@@ -1,13 +1,11 @@
 import React from 'react';
 import './Response.scss';
 
-export default function Response({model, prompt, completion}) {
+export default function Response({ completion }) {
     return (
-        <li className='response'>
-            <div className='response__container'>
-                <h3>Response: </h3>
-                <p className='response__text'>{completion}</p>
-            </div>
-        </li>
+        <div className='response'>
+            <p className='response__text'>Your new band's name is...</p>
+            <p className='response__completion'>{ completion }</p>
+        </div>
     )
 }
