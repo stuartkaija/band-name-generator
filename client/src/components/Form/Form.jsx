@@ -10,11 +10,14 @@ export default function Form({handleSubmit, error}) {
         <section className='form-section'>
             <h2 className='form-section__title'>Prompt</h2>
             <form className='form' name='promptForm' id='promptForm' onSubmit={handleSubmit}>
-                <label className='form__label' htmlFor="model">Select a musical genre</label>
+                <label className='form__label' htmlFor="genre">Select a musical genre</label>
+                <p className={error ? 'form__error' : 'form__error--hidden'} id='input-desc'>please select a genre!</p>
+
                 <select className='form__select' name="genre" id="genre">
+                    <option value="">select a genre</option>
                     {genres.map((genre) => {
                         return (
-                            <option key={uniqid()} value={genre} defaultValue='select a genre'>{genre}</option>
+                            <option key={uniqid()} value={genre}>{genre}</option>
                         )
                     })}
                 </select>

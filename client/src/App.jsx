@@ -6,57 +6,43 @@ import './App.scss';
 
 function App() {
 	
-	// const [prompt, setPrompt] = useState('');
-	// const [model, setModel] = useState('text-curie-001');
-	// const [error, setError] = useState(false);
-	const [genre, setGenre] = useState('rock')
-    const [completion, setCompletion] = useState({});
+	const [genre, setGenre] = useState('')
+    const [completion, setCompletion] = useState('');
+	const [error, setError] = useState(false);
 
 	const handleSubmit = (event) => {
         event.preventDefault();
+		setError(false);
 		const genre = event.target.genre.value;
-		console.log(genre);
-		// setError(false);
-		// const userInput = event.target.prompt.value;
-		// const model = event.target.model.value;
-
-		// if (!userInput) {
-		// 	setError(true);
-		// 	return;
-		// }
+		
+		if (!genre) {
+			setError(true)
+			return;
+		}
+		
 		setGenre(genre);
-        // setPrompt(userInput);
-		// setModel(model);
+
+		axios
+			.post("http://localhost:8080/", {genre: genre})
+			.then(response => setCompletion(response.data))
+			.catch(error => console.log(`error: ${error}`))		
     }
 
-	useEffect(() => {
-		if (!prompt) return;
-
-		axios.post("http://localhost:8080/", {
-			prompt: prompt,
-			// model: model
-		})
-		.then(response => setCompletion({
-			// model: model,
-			// prompt: prompt,
-			completion: response.data.text
-		}))
-		.catch(error => console.log(`error: ${error}`))
-
-		// setting prompt back to empty string allows user to submit same prompt repeatedly
-		// setPrompt('');
-
-	}, [prompt])
+	// useEffect(() => {
+	// 	console.log(genre);
+	// 	// check if genre is empty string
+	// 	// change error state
+	// }, [genre])
 
 	return (
 		<main className="App">
 			<h1>Band Name Generator</h1>
 			<Form
 				handleSubmit={handleSubmit}
-				// error={error}
+				error={error}
 			/>
 			<Response
-				completion={completion.completion}
+				completion={completion}
 			/>
 		</main>
 	);
