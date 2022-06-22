@@ -30,10 +30,7 @@ export default function HomePage() {
 
     return (
         <div>
-			<nav>
-				<h1>Band Name Generator</h1>
-				<p>Link To About Page</p>
-			</nav>
+
 			<Form
 				handleSubmit={handleSubmit}
 				error={error}
