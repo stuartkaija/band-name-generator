@@ -21,7 +21,7 @@ export default function Form({handleSubmit, error}) {
                     </select>
                 </div>
                 <p className={error ? 'form__error' : 'form__error--hidden'} id='input-desc'>please select a genre!</p>
-                <button className='form__button' type='submit' form='promptForm'>generate band name</button>
+                <button className='form__button' type='submit' form='promptForm'>generate name</button>
             </form>
         </section>
     )

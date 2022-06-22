@@ -14,12 +14,12 @@ app.use(cors());
 
 // routes
 app.post("/", (req, res) => {
-    const { prompt, model } = req.body;
+    const { genre } = req.body;
 
     const url = `https://api.openai.com/v1/completions`
     const data = {
-        model: model,
-        prompt: prompt,
+        model: "text-curie-001",
+        prompt: `Give me an original name for a band that plays ${genre} music. Do not use any curse words. The name must be original, and not already in use by another band.`,
         max_tokens: 60,
         temperature: 1
     }
@@ -31,38 +31,11 @@ app.post("/", (req, res) => {
 
     axios
         .post(url, data, config)
-        .then(response => res.json(response.data.choices[0]))
+        .then((response) => res.json(response.data.choices[0].text))
         .catch(error => console.log(error))
 });
 
 
 app.listen(port, () => {
-    console.log('Server is running on 8080');
+    console.log(`Server is running on ${port}`);
 });
-
-	// 	const url = `https://api.openai.com/v1/models/${model}/completions`;
-    //     const data = {
-    //         prompt: prompt,
-    //         max_tokens: 60,
-    //         temperature: 1
-    //     };
-    //     const config = {
-    //         headers: {
-    //             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-    //         }
-    //     };
-
-    //     const getCompletion = async () => {
-    //         try {
-    //             const response = await axios.post(url, data, config)
-	// 			setCompletions([{
-	// 				model: model,
-	// 				prompt: prompt,
-	// 				completion: response.data.choices[0].text
-	// 			}, ...completions]);
-
-    //         } catch (error) {
-    //             console.log(error);
-	// 			alert(error.message);
-    //         }
-    //     }

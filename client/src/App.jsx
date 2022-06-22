@@ -25,7 +25,7 @@ function App() {
 		axios
 			.post("http://localhost:8080/", {genre: genre})
 			.then(response => setCompletion(response.data))
-			.catch(error => console.log(`error: ${error}`))		
+			.catch(error => console.log(`error: ${error}`))
     }
 
 	return (
