@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from './components/Form/Form';
 import Response from './components/Response/Response';
+import Footer from './components/Footer/Footer';
 import './App.scss';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 			<Response
 				completion={completion}
 			/>
+			<Footer />
 		</main>
 	);
 }
