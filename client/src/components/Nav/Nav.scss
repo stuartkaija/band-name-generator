@@ -1,0 +1,27 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0rem;
+
+    &__link {
+        text-decoration: none;
+        color: $color-dark1;
+        transition: font-size 1s;
+
+        &:hover {
+            color: $color-accent2;
+        }
+    }
+
+    &__title {
+        margin: 0rem;
+    }
+}
+
+.active {
+    text-decoration: underline;
+}
