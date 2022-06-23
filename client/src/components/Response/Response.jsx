@@ -8,7 +8,7 @@ export default function Response({ completion }) {
     return (
         <div className='response'>
             <p className='response__text'>Your new band's name is...</p>
-            <p className='response__completion'>{/* completion */}Hardcoded Rockers</p>
+            <p className='response__completion'>{completion}</p>
         </div>
     )
 }

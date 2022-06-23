@@ -12,14 +12,14 @@ import './App.scss';
 function App() {
 	return (
 		<BrowserRouter>
-		<main className="App">
-			<Nav />
-			<Routes>
-				<Route path='/' element={<HomePage/>} />
-				<Route path='/about' element={<AboutPage/>} />
-			</Routes>
-			<Footer />
-		</main>
+			<main className="App">
+				<Nav />
+				<Routes>
+					<Route path='/' element={<HomePage/>} />
+					<Route path='/about' element={<AboutPage/>} />
+				</Routes>
+				<Footer />
+			</main>
 		</BrowserRouter>
 	);
 }

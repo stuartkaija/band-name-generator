@@ -11,6 +11,10 @@
         text-decoration: none;
         color: $color-dark1;
         transition: font-size 1s;
+
+        &:hover {
+            color: $color-accent2;
+        }
     }
 
     &__title {
@@ -18,6 +22,6 @@
     }
 }
 
-// .active {
-//     text-decoration: underline;
-// }
+.active {
+    text-decoration: underline;
+}
