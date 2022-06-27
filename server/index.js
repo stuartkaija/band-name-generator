@@ -15,6 +15,7 @@ const port = process.env.PORT || 8081;
 // middleware
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 app.use(cors(corsOptions));
 
 // routes
