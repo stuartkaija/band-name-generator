@@ -32,7 +32,7 @@ app.post("/", (req, res) => {
     axios
         .post(url, data, config)
         .then((response) => res.json(response.data.choices[0].text))
-        .catch(error => console.log(error))
+        .catch(error => console.log(`Error: ${error}`))
 });
 
 
