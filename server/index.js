@@ -31,7 +31,8 @@ app.post("/", (req, res) => {
     }
     const config = {
         headers: {
-            Authorization: `Bearer ${process.env.API_KEY}`
+            Authorization: `Bearer ${process.env.API_KEY}`,
+            'Access-Control-Allow-Origin': 'https://ai-response-generator.vercel.app/',
         }
     }
 
