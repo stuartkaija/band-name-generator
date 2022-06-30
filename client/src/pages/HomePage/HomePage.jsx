@@ -6,7 +6,7 @@ import './HomePage.scss';
 
 export default function HomePage() {
 
-	const [genre, setGenre] = useState('')
+	const [_genre, setGenre] = useState('')
     const [completion, setCompletion] = useState('');
 	const [error, setError] = useState(false);
 
@@ -23,7 +23,7 @@ export default function HomePage() {
 		setGenre(genre);
 
 		axios
-			.post("https://b4nd-n4me-g3nerator.herokuapp.com/", {genre: genre})
+			.post("http://localhost:8080/", {genre: genre})
 			.then(response => setCompletion(response.data))
 			.catch(error => console.log(`error: ${error}`))
     }

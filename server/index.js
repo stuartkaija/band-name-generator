@@ -1,11 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-// const corsOptions = {
-//     origin: "*",
-//     credentials: true,
-//     optionSuccessStatus: 200
-// }
 const { default: axios } = require('axios');
 
 // config
@@ -16,16 +11,6 @@ const port = process.env.PORT || 8081;
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
-// app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://ai-response-generator.vercel.app/");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
 
 // routes
 app.post("/", (req, res) => {
@@ -41,7 +26,7 @@ app.post("/", (req, res) => {
     const config = {
         headers: {
             Authorization: `Bearer ${process.env.API_KEY}`,
-            // Access-Control-Allow-Origin: 'https://ai-response-generator.vercel.app/',
+            // "Access-Control-Allow-Origin": "*",
             // Vary: 'Origin',
         }
     }
