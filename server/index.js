@@ -5,7 +5,7 @@ const { default: axios } = require('axios');
 
 // config
 require('dotenv').config();
-const port = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8081;
 
 // middleware
 app.use(express.json());
@@ -38,6 +38,6 @@ app.post("/", (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Server is running on ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on ${PORT}`);
 });
