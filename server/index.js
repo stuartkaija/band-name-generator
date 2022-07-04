@@ -26,7 +26,7 @@ app.post("/", (req, res) => {
     const config = {
         headers: {
             Authorization: `Bearer ${process.env.API_KEY}`,
-            // "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "*",
             // Vary: 'Origin',
         }
     }
