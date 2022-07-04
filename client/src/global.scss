@@ -29,10 +29,8 @@ code {
     monospace;
 }
 
-// a {
-//   text-decoration: none;
-
-//   &:visited {
-//     color: $color-dark1;
-//   }
-// }
+a {
+  &:visited {
+    color: $color-dark1;
+  }
+}
