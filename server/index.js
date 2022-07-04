@@ -7,10 +7,16 @@ const { default: axios } = require('axios');
 require('dotenv').config();
 const PORT = process.env.PORT || 8081;
 
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionsSuccessStatus: 204
+}
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // routes
 app.post("/", (req, res) => {
@@ -26,8 +32,6 @@ app.post("/", (req, res) => {
     const config = {
         headers: {
             Authorization: `Bearer ${process.env.API_KEY}`,
-            "Access-Control-Allow-Origin": "*",
-            // Vary: 'Origin',
         }
     }
 
