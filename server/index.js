@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8081;
 const corsOptions = {
     origin: '*',
     credentials: true,
-    optionsSuccessStatus: 204
+    optionsSuccessStatus: 200
 }
 
 // middleware

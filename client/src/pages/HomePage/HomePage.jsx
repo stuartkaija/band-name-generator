@@ -24,7 +24,7 @@ export default function HomePage() {
 
 		axios
 			// .post("http://localhost:8080/", {genre: genre})
-			.post("https://b4nd-n4me-g3nerator.herokuapp.com/", {genre: genre})
+			.post("https://band-name-g3nerator.herokuapp.com/", {genre: genre})
 			.then(response => setCompletion(response.data))
 			.catch(error => console.log(`error: ${error}`))
     }
