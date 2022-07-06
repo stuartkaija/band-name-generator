@@ -4,18 +4,19 @@
 .App {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	// justify-content: center;
+	height: 100%;
 	background-color: $color-light2;
-	padding: 1rem;
+	padding: 0rem 1rem;
 	transition: padding 1s ease-in-out;
 
 	@include tablet {
-		padding: 1rem 3rem;
+		padding: 0rem 4rem;
 		transition: padding 1s ease-in-out;
 	}
 
 	@include desktop {
-		padding: 1rem 8rem;
+		padding: 0rem 8rem;
 		transition: padding 1s ease-in-out;
 	}
 }

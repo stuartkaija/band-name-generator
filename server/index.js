@@ -5,64 +5,43 @@ const { default: axios } = require('axios');
 
 // config
 require('dotenv').config();
-const port = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8081;
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionsSuccessStatus: 200
+}
 
 // middleware
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // routes
 app.post("/", (req, res) => {
-    const { prompt, model } = req.body;
+    const { genre } = req.body;
 
     const url = `https://api.openai.com/v1/completions`
     const data = {
-        model: model,
-        prompt: prompt,
+        model: "text-curie-001",
+        prompt: `Give me an original name for a band that plays ${genre} music. Do not use any curse words. The name must be original, and not already in use by another band.`,
         max_tokens: 60,
         temperature: 1
     }
     const config = {
         headers: {
-            Authorization: `Bearer ${process.env.API_KEY}`
+            Authorization: `Bearer ${process.env.API_KEY}`,
         }
     }
 
     axios
         .post(url, data, config)
-        .then(response => res.json(response.data.choices[0]))
-        .catch(error => console.log(error))
+        .then((response) => res.json(response.data.choices[0].text))
+        .catch(error => console.log(`Error: ${error}`))
 });
 
 
-app.listen(port, () => {
-    console.log('Server is running on 8080');
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on ${PORT}`);
 });
-
-	// 	const url = `https://api.openai.com/v1/models/${model}/completions`;
-    //     const data = {
-    //         prompt: prompt,
-    //         max_tokens: 60,
-    //         temperature: 1
-    //     };
-    //     const config = {
-    //         headers: {
-    //             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-    //         }
-    //     };
-
-    //     const getCompletion = async () => {
-    //         try {
-    //             const response = await axios.post(url, data, config)
-	// 			setCompletions([{
-	// 				model: model,
-	// 				prompt: prompt,
-	// 				completion: response.data.choices[0].text
-	// 			}, ...completions]);
-
-    //         } catch (error) {
-    //             console.log(error);
-	// 			alert(error.message);
-    //         }
-    //     }

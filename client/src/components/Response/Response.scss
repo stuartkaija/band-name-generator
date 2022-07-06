@@ -2,26 +2,18 @@
 @use '../../styles/partials/mixins' as *;
 
 .response {
-    border-bottom: 1px dashed $color-dark1;
+    display: flex;
+    flex-direction: column;
 
-    &__title {
-        margin: 1rem 2rem 0rem 0rem;
-    }
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-
-        @include tablet {
-            flex-direction: row;
-            justify-content: space-between;
-        }
+    @include tablet {
+        margin: 1rem 4rem;
     }
 
     &__text {
+        font-size: 1rem;
+    }
 
-        @include tablet {
-            padding-left: 1rem;
-        }
+    &__completion {
+        font-size: 2rem;
     }
 }
